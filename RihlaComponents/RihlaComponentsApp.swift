@@ -1,0 +1,17 @@
+//
+//  RihlaComponentsApp.swift
+//  RihlaComponents
+//
+//  Created by Abdul Moeed on 04/02/2026.
+//
+
+import SwiftUI
+
+@main
+struct RihlaComponentsApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
