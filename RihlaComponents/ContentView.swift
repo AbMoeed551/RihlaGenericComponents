@@ -23,29 +23,32 @@ struct ContentView: View {
 //            reference: "- Bukhari"
 //        )
 //    ]
-//    
+//
+    @State private var showToast: Bool = false
+
     var body: some View {
-        HadithCardView(items: [
-            HadithViewStyle(
-                hadithLabel: "Daily Hadiths",
-                hadith: "One Umrah to the next is an expiation for whatever happened between them and the only reward for an accepted Hajj is paradise",
-                hadithReference: "- Sahih Muslim"
-            ),
-            HadithViewStyle(
-                hadithLabel: "Daily Hadiths",
-                hadith: "The best among you are those who have the best manners.",
-                hadithReference: "- Bukhari"
-            ),
-            HadithViewStyle(
-                hadithLabel: "Daily Hadiths",
-                hadith: "Actions are judged by intentions.",
-                hadithReference: "- Bukhari & Muslim"
-            )
-        ])
-        .cornerRadius(8)
-        .padding()
-    
-   }
+        ZStack(alignment: .top) {
+            
+          
+            VStack {
+           Spacer()
+                DoneButtonView(style: DoneButtonStyle(action: {
+                    print("hello Moeed")
+                    showToast = true
+                }))
+                Spacer()
+        
+            }
+            
+         
+            if showToast {
+                ToastNotficationView(onDismiss: {
+                    showToast = false
+                })
+               // .padding(.top, 16)
+            }
+        }
+    }
 }
 
 

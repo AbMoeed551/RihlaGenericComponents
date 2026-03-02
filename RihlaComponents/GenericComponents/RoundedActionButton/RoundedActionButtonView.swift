@@ -32,14 +32,17 @@ struct RoundedActionButtonView: View {
     var body: some View {
         Button(action: style.action){
             MeduimText(style: MediumTextStyle(text: style.buttonTitle, size: 13, color: style.buttonTitleColor))
+                .padding()
                 .frame(width: style.width, height: style.height)
                 .background(style.buttonBackgroundColor)
                 .cornerRadius(44)
+            
         }
+      
     }
 }
 
 #Preview {
 //    RoundedActionButtonView(style: RoundedActionButtonStyle(buttonBackgroundColor: .activeGreen))
-    RoundedActionButtonView(style: RoundedActionButtonStyle(buttonBackgroundColor: .mintGreen, buttonTitle: "View", buttonTitleColor: .white, action: {}, width: 61, height: 37))
+    RoundedActionButtonView(style: RoundedActionButtonStyle(buttonBackgroundColor: .mintGreen, buttonTitle: "Earned 4 Deeds", buttonTitleColor: .white, action: {}, width: .infinity, height: 37))
 }

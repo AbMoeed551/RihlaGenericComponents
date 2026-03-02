@@ -34,7 +34,7 @@ public extension Color {
         blue: 102/255,
     )
     
-    static let smokeWhite = Color (
+    static let smokeWhiteStroke = Color (
         red: 238/255,
         green: 238/255,
         blue: 238/255,
@@ -70,5 +70,21 @@ public extension Color {
         blue: 198/255,
     )
     
+    static let freshGreenStroke = Color (
+        red: 87/255,
+        green: 204/255,
+        blue: 153/255,
+    )
     
+    static let tickButtonColor = Color (
+        red: 72/255,
+        green: 170/255,
+        blue: 128/255,
+    )
+    static let offWhite = Color (
+        red: 248/255,
+        green: 248/255,
+        blue: 248/255,
+    )
+
 }
