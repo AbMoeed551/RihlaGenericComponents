@@ -10,7 +10,7 @@ struct ListModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .listRowInsets(EdgeInsets())
-            .listStyle(.plain)
+           // .listStyle(.plain)
             .scrollContentBackground(.hidden)
     }
 }

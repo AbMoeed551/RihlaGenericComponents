@@ -35,6 +35,7 @@ struct RoundedActionButtonView: View {
           
                 //.padding()
                 .frame(width: style.width, height: style.height)
+                
                 .background(style.buttonBackgroundColor)
                 .cornerRadius(44)
             

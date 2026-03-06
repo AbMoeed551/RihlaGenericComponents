@@ -37,15 +37,51 @@ public class ThemeManager: ObservableObject {
     }
     
     public var RihlaBackground: Color {
-        isLightModeOn ? .lightGreyColor : .lightGreyColor
+        isLightModeOn ? .lightGreyBackgroundColor : .lightGreyBackgroundColor
     }
-    
     public var mintGreen: Color {
         isLightModeOn ? .mintGreen : .mintGreen
     }
+    public var lightGray: Color {
+        isLightModeOn ? .lightGray : .lightGray
+    }
+    public var steel: Color {
+        isLightModeOn ? .steel : .steel
+    }
+    public var jungleGreen: Color {
+        isLightModeOn ? .jungleGreen : .jungleGreen
+    }
+    public var smokeWhiteStroke: Color {
+        isLightModeOn ? .smokeWhiteStroke : .smokeWhiteStroke
+    }
+    public var captionGray: Color {
+        isLightModeOn ? .captionGray : .captionGray
+    }
+    public var activeGreen: Color {
+        isLightModeOn ? .activeGreen : .activeGreen
+    }
+     public var customiseWhite: Color {
+        isLightModeOn ? .customiseWhite : .customiseWhite
+    }
+    public var darkGray: Color {
+        isLightModeOn ? .darkGray : .darkGray
+    }
+    public var secondaryPaleYello: Color {
+        isLightModeOn ? .secondaryPaleYello : .secondaryPaleYello
+    }
+    public var freshGreenStroke: Color {
+        isLightModeOn ? .freshGreenStroke : .freshGreenStroke
+    }
+     public var tickButtonColor: Color {
+        isLightModeOn ? .tickButtonColor : .tickButtonColor
+    }
+    public var offWhite: Color {
+        isLightModeOn ? .offWhite : .offWhite
+    }
 }
+
 extension Color {
-    static let lightGreyColor = Color(red: 248/255, green: 248/255, blue: 248/255)
+    static let lightGreyBackgroundColor = Color(red: 248/255, green: 248/255, blue: 248/255)
     
     static let lightGray = Color (
       red: 231/255,

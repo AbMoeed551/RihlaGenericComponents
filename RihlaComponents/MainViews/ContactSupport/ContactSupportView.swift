@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ContactSupportView: View {
+   private let supportEmail = "moeed4817@gmail.com"
     var body: some View {
         
         RihlaScreenContainer(style: .init(title: "Contact Support", baseStyle: .none), content: {
             
             VStack {
-                // BackButtonView(style: .init(title: "Contact Support", action: {}))
                 HStack {
                     VStack(alignment: .leading, spacing: 0) {
                         ZStack{
@@ -27,10 +27,13 @@ struct ContactSupportView: View {
                         MeduimText(style: .init(text: "Write us at", size: 18, color: .black))
                             .padding(.top, 8)
                         
-                        MeduimText(style: .init(text: "moeed4817@gmail.com", size: 16, color: .captionGray))
+                        MeduimText(style: .init(text: supportEmail, size: 16, color: .captionGray))
                             .padding(.top, 4)
                         
                         RoundedActionButtonView(style: .init(buttonBackgroundColor: .lightGray, buttonTitle: "Copy", buttonTitleColor: .black, action: {
+                            UIPasteboard.general.string = supportEmail
+                               print("Email Copied")
+                          
                             
                         }, width: 64, height: 37))
                             .padding(.top, 16)

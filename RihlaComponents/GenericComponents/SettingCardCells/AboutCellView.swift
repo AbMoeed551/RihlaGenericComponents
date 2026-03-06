@@ -1,5 +1,5 @@
 //
-//  SettingCardCellView.swift
+//  AboutCellView.swift
 //  RihlaComponents
 //
 //  Created by Abdul Moeed on 04/03/2026.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SettingCardCellStyle {
+struct AboutCellStyle {
     let primaryTitle: String
     let secondaryTitle: String?
     
@@ -16,8 +16,8 @@ struct SettingCardCellStyle {
         self.secondaryTitle = secondaryTitle
     }
 }
-struct SettingCardCellView: View {
-    let style: SettingCardCellStyle
+struct AboutCellView: View {
+    let style: AboutCellStyle
 
     var body: some View {
         HStack {
@@ -29,9 +29,8 @@ struct SettingCardCellView: View {
             Image(.arrowRightRound)
                 .frame(width: 12, height: 12) // arrow size adjust
         }
-        .padding(.vertical, 8) // vertical padding same as NotficationCell
-       // .padding(.horizontal, 16) // horizontal padding to match NotficationCell
- // optional, makes List row look full-width
+        .padding(.vertical, 8)
+       
     }
 }
 
@@ -40,14 +39,14 @@ struct SettingCardCellView: View {
     
     VStack{
         List {
-            SettingCardCellView(
-                style: SettingCardCellStyle(
+            AboutCellView(
+                style: AboutCellStyle(
                     primaryTitle: "Notifications",
                     secondaryTitle: "Enabled",
                 )
             )
-            SettingCardCellView(
-                style: SettingCardCellStyle(
+            AboutCellView(
+                style: AboutCellStyle(
                     primaryTitle: "Notifications",
                     secondaryTitle: "Enabled",
                 )

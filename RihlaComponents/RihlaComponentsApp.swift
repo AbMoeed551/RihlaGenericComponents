@@ -29,7 +29,8 @@ struct RihlaComponentsApp: App {
         WindowGroup {
         // SearchBarView(style: SearchBarStyle(searchTitle: "hello"))
            // DuaCardView()
-            ContactSupportView()
+//            ContactSupportView()
+            HapticFeedBackView()
      
         }
     }

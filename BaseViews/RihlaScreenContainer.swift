@@ -79,7 +79,7 @@ public struct RihlaScreenContainer<Content: View>: View {
                     content()
                     Spacer()
                 }
-                .padding(.horizontal, 24)
+                .padding(.horizontal, 20)
             }
         }
     }
