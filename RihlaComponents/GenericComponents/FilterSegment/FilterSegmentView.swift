@@ -28,7 +28,7 @@ struct SimpleFilterView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(items, id: \.label) { item in
-                    MeduimText(style: MediumTextStyle(text: item.label, size: 13, color: selected == item.label ? Color.white : Color.black))
+                    MeduimText(style: .init(text: item.label, size: 13, color: selected == item.label ? Color.white : Color.black))
                         .padding(.horizontal, 18)
                         .padding(.vertical, 13.5)
                         .background(

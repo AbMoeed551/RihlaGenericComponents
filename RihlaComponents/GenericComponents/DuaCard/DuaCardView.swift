@@ -17,38 +17,32 @@ struct  DuaCardViewStyle {
     }
 }
 struct DuaCardView: View {
+    @State private var isFavourite = false
     let style: DuaCardViewStyle
     init(style: DuaCardViewStyle) {
         self.style = style
     }
     var body: some View {
-        VStack{
+        
             VStack(alignment: .leading, spacing: 24 ){
-                CircleIconView(
-                    style: CircleIconStyle(
-                        width: 44,
-                        height: 44,
-                        backGroundColor: .yellow,
-                        image: style.isPlayingIcon,
-                        imageColor: .activeGreen,
-                        imageWidth: 18,
-                        imageHeight: 18
-                    )
-                )
-                ArabicRegularText(style: ArabicRegularTextStyle(text: style.arabicDua, size: 28, color: .white))
+                ToggleCircleButtonView(isOn: $isFavourite, style: ToggleCircleButtonStyle(width: 44, height: 44, backGroundColor: .jungleGreen, onImage: "play", offImage: "pause", imageColor: .white, imageWidth: 18, imageHeight: 18, action: {a in
+                print ("hello moeed")
+                }))
+                ArabicRegularText(style: .init(text: style.arabicDua, size: 28, color: .white))
                     .multilineTextAlignment(.trailing)
                     .lineSpacing(30)
-                RegularText(style: RegularTextStyle(text: style.englishTranslation, textColor: .white, textSize: 16))
+                RegularText(style: .init(text: style.englishTranslation, textColor: .white, textSize: 16))
                     .multilineTextAlignment(.leading)
             }
-            .background(Color.darkGray)
-            .padding(16)
+            .padding()
+            .background(
+                LinearGradient.primaryGreenGradient
+            )
+          
+            .cornerRadius(16)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .background(Color.darkGray)
-        .cornerRadius(16)
-        //.padding()
-    }
+       
 }
 
 #Preview {

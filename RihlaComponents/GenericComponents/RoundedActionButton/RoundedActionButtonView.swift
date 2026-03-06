@@ -32,7 +32,8 @@ struct RoundedActionButtonView: View {
     var body: some View {
         Button(action: style.action){
             MeduimText(style: MediumTextStyle(text: style.buttonTitle, size: 13, color: style.buttonTitleColor))
-                .padding()
+          
+                //.padding()
                 .frame(width: style.width, height: style.height)
                 .background(style.buttonBackgroundColor)
                 .cornerRadius(44)

@@ -27,8 +27,9 @@ struct RihlaComponentsApp: App {
 
     var body: some Scene {
         WindowGroup {
-         SearchBarView(style: SearchBarStyle(searchTitle: "hello"))
+        // SearchBarView(style: SearchBarStyle(searchTitle: "hello"))
            // DuaCardView()
+            ContactSupportView()
      
         }
     }

@@ -55,7 +55,9 @@ struct DuaSubcategoryCardView: View {
                     image: "globe",
                     imageColor: .activeGreen,
                     imageWidth: 18,
-                    imageHeight: 18
+                    imageHeight: 18, action: {
+                        print("hello moeed")
+                    }
                 )
             )
         }

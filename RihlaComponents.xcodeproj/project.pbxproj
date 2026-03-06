@@ -11,6 +11,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		4927A3402F5979740020D1E9 /* BaseViews */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BaseViews;
+			sourceTree = "<group>";
+		};
+		4927A3432F5979CC0020D1E9 /* RihlaThemes */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = RihlaThemes;
+			sourceTree = "<group>";
+		};
 		49B405E42F3329CA00A098FB /* RihlaComponents */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = RihlaComponents;
@@ -32,6 +42,8 @@
 		49B405D92F3329C900A098FB = {
 			isa = PBXGroup;
 			children = (
+				4927A3432F5979CC0020D1E9 /* RihlaThemes */,
+				4927A3402F5979740020D1E9 /* BaseViews */,
 				49B405E42F3329CA00A098FB /* RihlaComponents */,
 				49B405E32F3329CA00A098FB /* Products */,
 			);
@@ -61,6 +73,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				4927A3402F5979740020D1E9 /* BaseViews */,
+				4927A3432F5979CC0020D1E9 /* RihlaThemes */,
 				49B405E42F3329CA00A098FB /* RihlaComponents */,
 			);
 			name = RihlaComponents;

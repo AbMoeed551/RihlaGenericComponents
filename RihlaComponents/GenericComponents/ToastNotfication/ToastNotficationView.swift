@@ -28,7 +28,7 @@ struct ToastNotficationView: View {
         .background(Color.customiseWhite)
         .cornerRadius(29)
         .overlay(RoundedRectangle(cornerRadius: 29).stroke(Color.freshGreenStroke, lineWidth: 1))
-        .offset(y: isVisible ? 0 : 80)
+        .offset(y: isVisible ? 0 : -80)
         .opacity(isVisible ? 1 : 0)
         .task {
           
@@ -36,13 +36,12 @@ struct ToastNotficationView: View {
                 isVisible = true
             }
             
-            // Step 2: 2 sec baad collapse
             try? await Task.sleep(for: .seconds(2))
             withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
                 isCollapsed = true
             }
-            try? await Task.sleep(for: .seconds(1)) // ✅ 2. Collapse hone do
-                            onDismiss?() // ✅ 3. Phir parent k
+            try? await Task.sleep(for: .seconds(1))
+                            onDismiss?()
         }
             Spacer()
     }

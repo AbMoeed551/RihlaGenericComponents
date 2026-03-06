@@ -29,7 +29,7 @@ struct CategoryRowView: View {
     var body: some View {
         HStack{
             HStack(spacing: 8){
-                CircleIconView(style: CircleIconStyle(width: 44, height: 44, backGroundColor: .lightGray, image: "heart", imageColor: .mintGreen, imageWidth: 15.8, imageHeight: 15.8))
+                CircleIconView(style: CircleIconStyle(width: 44, height: 44, backGroundColor: .lightGray, image: "heart", imageColor: .mintGreen, imageWidth: 15.8, imageHeight: 15.8, action: {}))
                 SemiBoldText(style: SemiBoldTextStyle(text: style.title, textColor: .black, textSize: 16))
                 Spacer()
                 MeduimText(style: MediumTextStyle(text: style.numberOfDua, size: 13, color: .steel))

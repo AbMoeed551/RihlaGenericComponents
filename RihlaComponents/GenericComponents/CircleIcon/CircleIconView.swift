@@ -15,7 +15,9 @@ struct CircleIconStyle {
     let imageColor: Color
     let imageWidth: CGFloat
     let imageHeight: CGFloat
-    init(width: CGFloat, height: CGFloat, backGroundColor: Color, image: String, imageColor: Color, imageWidth: CGFloat, imageHeight: CGFloat) {
+    let action: () -> Void
+
+    init(width: CGFloat, height: CGFloat, backGroundColor: Color, image: String, imageColor: Color, imageWidth: CGFloat, imageHeight: CGFloat, action: @escaping () -> Void) {
         self.width = width
         self.height = height
         self.backGroundColor = backGroundColor
@@ -23,11 +25,13 @@ struct CircleIconStyle {
         self.imageColor = imageColor
         self.imageWidth = imageWidth
         self.imageHeight = imageHeight
+        self.action = action
     }
 }
 
 struct CircleIconView: View {
     let style: CircleIconStyle
+    
     init(style: CircleIconStyle) {
         self.style = style
     }
@@ -43,6 +47,9 @@ struct CircleIconView: View {
                 .frame(width: style.imageWidth, height: style.imageHeight)
                 .foregroundColor(style.imageColor)
         }
+        .onTapGesture {
+            style.action()
+        }
     }
 }
 
@@ -55,7 +62,7 @@ struct CircleIconView: View {
             image: "globe",
             imageColor: .activeGreen,
             imageWidth: 18,
-            imageHeight: 18
+            imageHeight: 18, action: {}
         )
     )
 

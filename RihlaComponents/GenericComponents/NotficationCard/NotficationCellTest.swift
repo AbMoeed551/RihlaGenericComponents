@@ -1,37 +1,19 @@
-
-//  ContentView.swift
+//
+//  NotficationCellTest.swift
 //  RihlaComponents
 //
-//  Created by Abdul Moeed on 04/02/2026.
-
+//  Created by Abdul Moeed on 03/03/2026.
+//
 
 import SwiftUI
 
-
-    
-
-    
-//    var hadiths = [
-//        HadithModel(
-//            title: "Daily Hadiths",
-//            content: "One Umrah to the next is an expiation for whatever happened between them and the only reward for an accepted Hajj is paradise.",
-//            reference: "- Sahih Muslim"
-//        ),
-//        HadithModel(
-//            title: "Daily Hadiths",
-//            content: "The best among you are those who have the best manners and character.",
-//            reference: "- Bukhari"
-//        )
-//    ]
-//
-    struct ContentView: View {
-        
-        @State private var adhkarReminder = false
-          @State private var notificationSound = false
-          @State private var vibrationSound = false
-          @State private var settingEnable = false
-        
-        var body: some View {
+struct NotficationCellTest: View {
+    @State private var adhkarReminder = false
+      @State private var notificationSound = false
+      @State private var vibrationSound = false
+      @State private var settingEnable = false
+     var body :  some View {
+        VStack{
             Form {
                 NotficationCell(
                     isToggleEnable: $adhkarReminder,
@@ -73,9 +55,8 @@ import SwiftUI
             }
         }
     }
-
-
+}
 
 #Preview {
-    ContentView()
+    NotficationCellTest()
 }

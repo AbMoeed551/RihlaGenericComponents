@@ -52,7 +52,7 @@ struct AdhkarSubcategoryCardView: View {
                     image: "globe",
                     imageColor: .activeGreen,
                     imageWidth: 18,
-                    imageHeight: 18
+                    imageHeight: 18, action: {}
                 )
             )
             VStack(alignment: .leading, spacing: 4){
