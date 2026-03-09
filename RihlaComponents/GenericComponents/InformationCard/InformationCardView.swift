@@ -18,12 +18,10 @@ struct InformationCardView: View {
             }
             MeduimText(style: MediumTextStyle(text: "We only access your name and profile picture from Apple/Google. Your data remains private and secure.", size: 14, color: .darkGray))
                 .multilineTextAlignment(.leading)
-            
         }
         .padding()
         .background(Color.lightGray)
         .cornerRadius(12)
-      
     }
 }
 

@@ -30,7 +30,6 @@ struct NotficationView: View {
                     .onChange(of: adhkarReminder) { if adhkarReminder { print("moeed") } else { print("afaq") } }
                     
                     Divider()
-                    
                     NotficationCell(
                         isToggleEnable: $notificationSound,
                         style: NotficationCellStyle(cellLabel: "Adhkar Reminder")

@@ -41,7 +41,7 @@ struct CircleIconView: View {
                 .fill(
                     Color(style.backGroundColor))
                 .frame(width: style.width, height: style.height)
-            Image(systemName: style.image)
+            Image(style.image)
                 .resizable()
                 .scaledToFit()
                 .frame(width: style.imageWidth, height: style.imageHeight)
