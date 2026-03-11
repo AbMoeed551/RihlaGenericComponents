@@ -39,7 +39,6 @@ struct AboutView: View {
                         }
                 }
                 .padding()
-                
                 .background(Color.white)
                 .cornerRadius(16)
                 .padding(.top, 24)

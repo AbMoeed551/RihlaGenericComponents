@@ -20,18 +20,15 @@ struct SignInButtonStyle{
 struct SignInButtonView: View {
     let style: SignInButtonStyle
     var body: some View {
-        
-        
         Button{
             style.action()
         }
-        
         label: {
         
         HStack(spacing: 8){
             Image(systemName: style.image)
                 .resizable()
-                .frame(width: 16.8,height: 20)
+                .frame(width: 20,height: 20)
             MeduimText(style: .init(text: style.title, size: 16, color: .black))
             
         }

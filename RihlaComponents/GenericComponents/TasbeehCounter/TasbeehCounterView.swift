@@ -5,44 +5,20 @@
 //  Created by Abdul Moeed on 09/03/2026.
 //
 
-//import SwiftUI
-//
-//struct TasbeehCounterView: View {
-//    var body: some View {
-//        VStack{
-//            HStack{
-//                SemiBoldText(style: .init(text: "Alhamdulillah", textColor: .black, textSize: 20))
-//                Spacer()
-//                CircleIconView(style: .init(width: 44, height: 44, backGroundColor: .lightGray, image: "arrowRightRound", imageColor: .black, imageWidth: 20, imageHeight: 20, action: {}))
-//            }
-//        }
-//    
-//    }
-//}
-//
-//#Preview {
-//    TasbeehCounterView()
-//}
-//
-//  TasbeehCounterView.swift
-//  RihlaComponents
-//
 
 import SwiftUI
-
-// MARK: - Models
 
 struct DhikrOption: Identifiable, Equatable {
     let id = UUID()
     let title: String
-    var dailyGoal: Int
+    let dailyGoal: Int
 }
 
 // MARK: - Style Models
 
 struct TasbeehCounterStyle {
-    var dhikrOptions: [DhikrOption]
-    var onArrowTap: () -> Void
+    let dhikrOptions: [DhikrOption]
+    let onArrowTap: () -> Void
 
     init(
         dhikrOptions: [DhikrOption] = [
@@ -57,58 +33,42 @@ struct TasbeehCounterStyle {
     }
 }
 
-// MARK: - Main View
+
 
 struct TasbeehCounterView: View {
-
     var style: TasbeehCounterStyle
-
     @State private var selectedOption: DhikrOption
     @State private var count: Int = 0
-
     init(style: TasbeehCounterStyle = .init()) {
         self.style = style
         _selectedOption = State(initialValue: style.dhikrOptions.first ?? .init(title: "Alhamdulillah", dailyGoal: 120))
     }
-
-    // Derived
-    private var remaining: Int { max(selectedOption.dailyGoal - count, 0) }
-    private var progress: Double {
-        guard selectedOption.dailyGoal > 0 else { return 0 }
-        return min(Double(count) / Double(selectedOption.dailyGoal), 1.0)
+    private var remaining: Int {
+        max(selectedOption.dailyGoal - count, 0)
     }
-
+    private var progress: Double {
+        min(Double(count) / Double(max(selectedOption.dailyGoal, 1)), 1)
+    }
     var body: some View {
         VStack(spacing: 0) {
 
-            // MARK: Header
             HStack {
-                Text(selectedOption.title)
-                    .font(.system(size: 22, weight: .semibold))
-                    .foregroundColor(.black)
-
+                SemiBoldText(style: .init(text: selectedOption.title, textColor: .black, textSize: 20))
                 Spacer()
-
-                CircleIconView(style: .init(width: 44, height: 44, backGroundColor: .lightGray, image: "arrowRightRound", imageColor: .black, imageWidth: 20, imageHeight: 20, action: {}))
+                CircleIconView(style: .init(width: 44, height: 44, backGroundColor: .lightGray, image: "arrowRightRound", imageColor: .black, imageWidth: 20, imageHeight: 20, action: {style.onArrowTap()}))
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 20)
-            .padding(.bottom, 28)
+            .padding()
 
-            // MARK: Circular Progress Ring
             TasbeehRingView(
                 count: count,
                 remaining: remaining,
                 progress: progress,
-                onTap: handleTap
             )
-            .frame(width: 220, height: 220)
-
+            
+            .frame(width: 228, height: 228)
+            .padding(.top, 24)
             // MARK: Daily Goal
-            Text("Daily Goal: \(selectedOption.dailyGoal)")
-                .font(.system(size: 16, weight: .regular))
-                .foregroundColor(.black.opacity(0.7))
-                .padding(.top, 24)
+            MeduimText(style: .init(text: "Daily Goal: \(selectedOption.dailyGoal)", size: 13, color: .darkGray))
 
             // MARK: Divider
             Divider()
@@ -116,106 +76,84 @@ struct TasbeehCounterView: View {
                 .padding(.vertical, 20)
 
             // MARK: Dhikr Options Label
-            Text("Dhikr Options")
-                .font(.system(size: 16, weight: .regular))
-                .foregroundColor(.black.opacity(0.7))
-                .padding(.bottom, 14)
+
+            MeduimText(style: .init(text: "Dhikr Options", size: 13, color: .darkGray))
 
             // MARK: Dhikr Pill Buttons
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(style.dhikrOptions) { option in
-                        DhikrPillButton(
-                            title: option.title,
-                            isSelected: option == selectedOption,
-                            action: {
-                                selectedOption = option
-                                count = 0
-                            }
-                        )
+                        DhikrPillButtonView(style: .init(title: option.title, isSelected: option == selectedOption, action: {
+                            selectedOption = option
+                            count = 6
+                        }))
                     }
                 }
-                .padding(.horizontal, 20)
             }
-
-            Spacer(minLength: 24)
+            .padding()
         }
+        
         .background(Color.white)
-        .cornerRadius(20)
+        .cornerRadius(16)
         .shadow(color: .black.opacity(0.07), radius: 12, x: 0, y: 4)
     }
-
-    // MARK: - Actions
-    private func handleTap() {
-        if count < selectedOption.dailyGoal {
-            count += 1
-        }
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
-    }
 }
-
-// MARK: - Ring View
 
 struct TasbeehRingView: View {
     let count: Int
     let remaining: Int
     let progress: Double
-    let onTap: () -> Void
-
-
-
+    private let startAngle: Double = 135
+    private let totalArc: Double   = 270
     var body: some View {
         ZStack {
-            // Track ring
-            Circle()
-                .stroke(Color.lightGray, style: StrokeStyle(lineWidth: 18))
-
-            // Progress ring (270° sweep, starts from bottom-left like image)
-            Circle()
-                .trim(from: 0, to: progress * 0.80)
-                .stroke(Color.jungleGreen, style: StrokeStyle(lineWidth: 18, lineCap: .round))
-                .rotationEffect(.degrees(90))
+            Arc(startAngle: startAngle,
+                endAngle: startAngle + totalArc,
+                clockwise: true)
+                .stroke(
+                    Color.lightGray,
+                    style: StrokeStyle(lineWidth: 18, lineCap: .round)
+                )
+            Arc(startAngle: startAngle,
+                endAngle: startAngle + totalArc * progress,
+                clockwise: true)
+                .stroke(
+                    Color.jungleGreen,
+                    style: StrokeStyle(lineWidth: 18, lineCap: .round)
+                )
                 .animation(.easeInOut(duration: 0.3), value: progress)
-
-            // Inner circle
             Circle()
                 .fill(Color.lightGray)
                 .padding(22)
 
             VStack(spacing: 4) {
-
                 SemiBoldText(style: .init(text: "\(count)", textColor: .jungleGreen, textSize: 39))
                 MeduimText(style: .init(text: "\(remaining) Remaining", size: 13, color: .black))
             }
         }
-        .onTapGesture { onTap() }
-        .contentShape(Circle())
+    
     }
 }
 
+struct Arc: Shape {
+    let startAngle: Double  // degrees
+    var endAngle: Double    // degrees
+    let clockwise: Bool
+    var animatableData: Double {
+        get { endAngle }
+        set { endAngle = newValue }
+    }
 
-
-struct DhikrPillButton: View {
-    let title: String
-    let isSelected: Bool
-    let action: () -> Void
-
-    private let selectedColor = Color(red: 0.20, green: 0.55, blue: 0.38)
-
-    var body: some View {
-        Button(action: action) {
-            Text(title)
-                .font(.system(size: 15, weight: .medium))
-                .foregroundColor(isSelected ? .white : .black)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 12)
-                .background(
-                    RoundedRectangle(cornerRadius: 30)
-                        .fill(isSelected ? selectedColor : Color(red: 0.93, green: 0.93, blue: 0.93))
-                )
-        }
-        .buttonStyle(PlainButtonStyle())
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.addArc(
+            center: CGPoint(x: rect.midX, y: rect.midY),
+            radius: rect.width / 2,
+            startAngle: .degrees(startAngle),
+            endAngle: .degrees(endAngle),
+            clockwise: !clockwise  // SwiftUI mein Y-axis ulta hota hai
+        )
+        return path
     }
 }
 
@@ -232,6 +170,6 @@ struct DhikrPillButton: View {
             onArrowTap: { print("Arrow tapped") }
         )
     )
-    .padding(20)
+    //.padding(20)
     .background(Color(.systemGroupedBackground))
 }

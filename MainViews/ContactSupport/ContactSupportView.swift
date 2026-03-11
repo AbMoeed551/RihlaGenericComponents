@@ -44,8 +44,6 @@ struct ContactSupportView: View {
                 .background(Color.customiseWhite)
                 .cornerRadius(16)
                 .frame(maxWidth: .infinity)
-                
-                
             }
             .padding(.top, 34)
             

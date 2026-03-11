@@ -36,7 +36,10 @@ struct SearchBarView: View {
         .cornerRadius(80)
         .overlay(
             RoundedRectangle(cornerRadius: 80)
+            
                 .stroke(Color.smokeWhiteStroke, lineWidth: 1)
+ 
+            
         )
     }
 }
